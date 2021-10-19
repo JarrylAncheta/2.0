@@ -1,109 +1,122 @@
-//what should i eat from mcdonalds
-let mcdonalds = [{
-    name: "mcchickens",
-    qty: "3"
-  },
-  {
-    name: "mcnuggets",
-    qty: "20"
-  },
-  {
-    name: "oreo mcflurrys",
-    qty: "14"
-  },
-  {
-    name: "spicy mcnuggets",
-    qty: "80"
-  },
-  {
-    name: "fish filets (eww)",
-    qty: "1/2"
-  },
-  {
-    name: "big macs",
-    qty: "16"
-  }
+// food array
+let foodName = [
+{name: "almond_pepper_chicken_tenders"}  ,
+{name:"savory_steamed_rice_cakes_with_prawn"}  ,
+{name:"sizzling_pancake"}  ,
+{name:"beef_filet_mignon"}  ,
+{name:"bibimbap"}  ,
+{name:"broken_rice"}  ,
+{name:"Noodle_and_Tofu_with_Shrimp_Sauce"}  ,
+{name:"snail_vermicelli_soup"}  ,
+{name:"chicken_rice"}  ,
+{name:"curry"}  ,
+{name:"duck_noodle"}  ,
+{name:"hamburger"}  ,
+{name:"omelette_bento"}  ,
+{name:"pho"}  ,
+{name:"pizza"}  ,
+{name:"ramen"}  ,
+{name:"spaghetti"},
+{name:"steak"},
+{name:"tom_yum"},
 ];
-
 let randomIndex;
-let animating = false;
-let ronnie = [];
+let backgroundColor;
+let animate = false;
+let foods = [];
 let imageCounter = 0;
-
+let button;
 
 function preload() {
-
-  for (let i = 0; i <= 13; i++) {
-    ronnie[i] = loadImage(`MyPics/ronnie_${i}.jpg`)
+  // sound
+  soundFormats("mp3");
+  fx=loadSound("assets/Minecraft Eating - Sound Effect (HD).mp3")
+  for (let i = 0; i < foodName.length; i++) {
+    img = loadImage("assets/food_" + foodName[i].name + ".jpg")
+    foods[i] = {
+      image: img,
+      name: foodName[i].name
+    }
   }
+myFont = loadFont('assets/IndieFlower-Regular.ttf');
 }
-
 
 function setup() {
-  createCanvas(600, 600);
-  background(243, 236, 128);
+
+  createCanvas(1000, 1000);
+
+  background(color(random(255, 205), random(205, 255), random(205, 205)));
+  backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
   textSize(30);
-  textFont('Comic Sans MS')
-  textStyle(BOLD);
+  textFont(myFont);
+  fill(0);
+  frameRate(20);
   imageMode(CENTER);
-  frameRate(8);
+  textAlign(CENTER);
+  text("Are you hungry,",width/2, height/2 -50);
+  text("and can't decide what to eat?",width/2, height/2);
+  text("click on the button below to explore",width/2, height/2 + 50);
 
+// create a button
+  button = createButton("Explore!");
+  button.position(width/2 -100, height/2+400);
+  button.size(200, 50);
+  button.style("font-family", "IndieFlower-Regular");
+  button.style("font-size", "30px");
+  button.style('background-color', "#bfc8db");
 
-  button = createButton("summon the spirit of ronnie to help you");
+// if button is pressed
   button.mousePressed(buttonPressed);
-
-
-
-
-  console.log(ronnie)
-
-
-
 }
-
 function draw() {
-
-  if (animating == true) {
+  if (animate == true) {
     clear();
-    image(ronnie[imageCounter], width / 2, height / 2);
-
-
-    if (imageCounter < ronnie.length - 1) {
+    fill(random(255, 205), random(205, 255), random(205, 205))
+    if (imageCounter < foods.length - 1) {
       imageCounter++;
     } else {
       imageCounter = 0;
     }
+    food = foods[imageCounter]
+    image(food.image, width / 2, height / 2);
   }
 }
 
 function randomizer() {
-  animating = false;
-
-  if (mcdonalds[0]) {
-    //displays random name & splices it out of array
-    background(random(100, 245), random(120, 240), random(130, 245));
-    clear();
-    randomIndex = int(random(mcdonalds.length));
-    image(random(ronnie), width / 2, height / 2);
-    stroke(255, 204,0)
-    strokeWeight(2);
-    text(mcdonalds[randomIndex].qty, width / 3.5 , height - 200);
-    stroke(255, 204,0)
-    strokeWeight(2);
-    text(mcdonalds[randomIndex].name,  width / 2.5 , height - 200);
-
-    mcdonalds.splice(randomIndex, 1);
-
+  animate = false;
+  if (foods.length > 0) {
+    // get random object from stuffs
+    background(random(255, 205), random(205, 255), random(205, 205));
+    randomIndex = int(random(foods.length));
+    fill(0);
+    food = foods[randomIndex]
+    image(food.image, width / 2, height /2);
+    foodName = food.name.replaceAll("_", " ");
+    text(
+      `How about some ${foodName} ?`,
+      width / 2,
+      height /1.2
+    );
+    // and then take that object out of the array
+    foods.splice(randomIndex, 1);
   } else {
-    background(random(100, 245), random(120, 240), random(130, 245));
-    text("too indecisive! no mcdonalds for you :/", 40, 200);
+    //   draw the background again so it does not overlay the previous object
+    background(backgroundColor);    // when we show all food, nothing else to show
+    text("Seriously, you go all the way here?", width / 2, height / 2);
+    text("Make up your mind. Eat anything!",width/2, height/2 +50)
   }
 }
 
 function buttonPressed() {
-  animating = true;
-  setTimeout(randomizer, 2000);
+  // if there's more than 1 food in the array, run the timeout
+  animate = foods.length > 1;
+  if (animate) {
 
+    setTimeout(randomizer, 1500);
 
+    fx.play();
+    // don't run the timeout + display the last food
+  } else {
+    randomizer()
+  }
 }
-
