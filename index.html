@@ -8,6 +8,13 @@ margin-top: 30px;
 </style>
 </head>
 
+let randomIndex;
+let backgroundColor;
+let animate = false;
+let foods = [];
+let imageCounter = 0;
+let button;
+   
 <script>
 function displayRandomImages()
 {
@@ -118,6 +125,21 @@ function displayRandomImages()
   // display the new random image
   document.body.appendChild(newImage);
 }
+ 
+   function draw() {
+  if (animate == true) {
+    clear();
+    fill(random(255, 205), random(205, 255), random(205, 205))
+    if (imageCounter < foods.length - 1) {
+      imageCounter++;
+    } else {
+      imageCounter = 0;
+    }
+    food = foods[imageCounter]
+    image(food.image, width / 2, height / 2);
+  }
+}
+   
 </script>
 
 <body>
