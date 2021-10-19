@@ -9,7 +9,6 @@ margin-top: 30px;
 </head>
 
 <script>
-function displayRandomImages()
 {
    //array of images with image location, height, and width
    var imageArray = [
@@ -70,6 +69,11 @@ function displayRandomImages()
      images[0].parentNode.removeChild(images[0]);
   }
   // display the new random image
+  var imageOne = "https://jarrylancheta.github.io/2.0/MyPics/Image1.jpg""
+   
+  if(newImage == imageOne){
+     var result = imageOne.link("https://artsandcultures.google.com/");
+  }
   document.body.appendChild(newImage);
 }
 </script>
