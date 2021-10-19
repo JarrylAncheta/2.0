@@ -1,57 +1,133 @@
-// my stuffs
-let restaurant = [
-  { name: "McDonald's", food: "10 piece nuggets" },
-  { name: "In&Out", food: "double double" },
-  { name: "Wendy's", food: "a large sprite" },
-  { name: "Chic-fil-A", food: "vanilla ice cream" },
-  { name: "Burger King", food: "a milkshake" },
-];
-let randomIndex;
-let backgroundColor;
-let animate = false;
-function setup() {
-  createCanvas(1000, 1000);
-  background(color(random(255, 205), random(205, 255), random(205, 205)));
-  backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
-  textSize(30);
-  fill(0);
-  text("click to begin", 100, 100);
+<html>
+<head>
+<title>Task Randomizer</title>
+<style>
+body {
+margin-top: 30px;
 }
-// animate the ellipses
-function draw() {
-  if (animate == true) {
-    noStroke();
-    fill(random(255, 205), random(205, 255), random(205, 205))
-    ellipse(random(width), random(height), random(10, 200));
+</style>
+</head>
+   
+<script>
+function displayRandomImages()
+{
+   //array of images with image location, height, and width
+   var imageArray = [
+   {
+     //address URL of the image
+    
+      src: "MyPics/Image1.jpg",
+     //size for the image to be display on webpage
+     width: "1400",
+     height: "750"
+   },
+   {
+     src: "MyPics/Image2.jpg",
+     width: "1400",
+     height: "750"
+   },
+   {
+     src: "MyPics/Image3.jpg",
+     width: "1400",
+     height: "750"
+   },
+   {
+     src: "MyPics/Image4.jpg",
+     width: "1400",
+     height: "750"
+    },
+   {
+     src: "MyPics/Image5.jpg",
+     width: "1400",
+     height: "750"
+    },
+     {
+     src: "MyPics/Image6.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image7.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image8.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image9.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image10.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image11.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image12.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image13.jpg",
+     width: "1400",
+     height: "750"
+    },
+       {
+     src: "MyPics/Image14.jpg",
+     width: "1400",
+     height: "750"
+    }];
+   
+
+    //find the length of the array of images
+    var arrayLength = imageArray.length;
+    var newArray = [];
+    for (var i = 0; i < arrayLength; i++) {
+        newArray[i] = new Image();
+        newArray[i].src = imageArray[i].src;
+        newArray[i].width = imageArray[i].width;
+        newArray[i].height = imageArray[i].height;
+    }
+
+  // create random image number
+  function getRandomNum(min, max)
+  {
+      // generate and return a random number for the image to be displayed
+      imgNo = Math.floor(Math.random() * (max - min + 1)) + min;
+      return newArray[imgNo];
   }
-}
 
-function randomizer() {
-  animate = false;
-  if (restaurant[0]) {
-    //   get random object from stuffs
-    background(backgroundColor);
-    randomIndex = int(random(restaurant.length));
-      fill(0);
+  // 0 is first image and (preBuffer.length - 1) is last image of the array
+  var newImage = getRandomNum(0, newArray.length - 1);
 
-    text(
-      ` ${restaurant[randomIndex].food} at
-      ${restaurant[randomIndex].name}`,
-      width / 2,
-      height / 2
-    );
-    //   and then take that object out of the array
-    restaurant.splice(randomIndex, 1);
-  } else {
-    //   draw the background again so it does not overlay the previous object
-    background(backgroundColor);
-    // when we show all obejcts, nothing else to show
-      fill(0);
-
-    text("Sorry, I don't have anything left :(", width / 4, height / 2);
+  // remove the previous images
+  var images = document.getElementsByTagName('img');
+  var l = images.length;
+  for (var p = 0; p < l; p++) {
+     images[0].parentNode.removeChild(images[0]);
   }
+  // display the new random image
+  document.body.appendChild(newImage);
 }
-function mousePressed() {
-  animate = true;
-  setTimeout(randomizer, 1500);
-}
+   
+</script>
+
+<body>
+<div>
+<center>
+<h2 style="color:green"> Daily Objective </h2>
+<h4> Press the button to reveal your daily objective/challenge </h4>
+<button onclick="displayRandomImages();"> CLICK ME </button>
+</center>
+</div>
+</body>
+</html>
