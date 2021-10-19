@@ -87,18 +87,6 @@ function displayRandomImages()
      height: "750"
     }];
    
-   function buttonPressed() {
-  // if there's more than 1 food in the array, run the timeout
-  animate = foods.length > 1;
-  if (animate) {
-
-    setTimeout(randomizer, 1500);
-
-    fx.play();
-    // don't run the timeout + display the last food
-  } else {
-    randomizer()
-  }
 
     //find the length of the array of images
     var arrayLength = imageArray.length;
