@@ -86,6 +86,30 @@ function displayRandomImages()
      width: "1400",
      height: "750"
     }];
+   
+   function randomizer() {
+  animate = false;
+  if (foods.length > 0) {
+    // get random object from stuffs
+    background(random(255, 205), random(205, 255), random(205, 205));
+    randomIndex = int(random(foods.length));
+    fill(0);
+    food = foods[randomIndex]
+    image(food.image, width / 2, height /2);
+    foodName = food.name.replaceAll("_", " ");
+    text(
+      `How about some ${foodName} ?`,
+      width / 2,
+      height /1.2
+    );
+    // and then take that object out of the array
+    foods.splice(randomIndex, 1);
+  } else {
+    //   draw the background again so it does not overlay the previous object
+    background(backgroundColor);    // when we show all food, nothing else to show
+    text("Seriously, you go all the way here?", width / 2, height / 2);
+    text("Make up your mind. Eat anything!",width/2, height/2 +50)
+  }
 
     //find the length of the array of images
     var arrayLength = imageArray.length;
