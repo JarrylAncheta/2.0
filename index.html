@@ -9,37 +9,18 @@ margin-top: 30px;
 </head>
 
 <script>
+   
+   
 function displayRandomImages()
 {
    //array of images with image location, height, and width
-   var imageArray = [
-   {
-     //address URL of the image
-     //size for the image to be display on webpage
-     src: "MyPics/Image1.jpg",
-     width: "1400",
-     height: "750"
-   },
-   {
-     src: "MyPics/Image2.jpg",
-     width: "1400",
-     height: "750"
-   },
-   {
-     src: "MyPics/Image3.jpg",
-     width: "1400",
-     height: "750"
-   },
-   {
-     src: "MyPics/Image4.jpg",
-     width: "1400",
-     height: "750"
-    },
-   {
-     src: "MyPics/Image5.jpg",
-     width: "1400",
-     height: "750"
-    }];
+   var total_images = 3;
+var random_number = Math.floor((Math.random()*total_images));
+var random_img = new Array();
+random_img[0] = '<a href="page1.html"><img src="1.gif"></a>';
+random_img[1] = '<a href="page2.html"><img src="3.gif"></a>';
+random_img[2] = '<a href="page3.html"><img src="4.gif"></a>';
+document.getElementById('image').innerHTML = random_img[random_number];
 
     //find the length of the array of images
     var arrayLength = imageArray.length;
