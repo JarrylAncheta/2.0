@@ -34,7 +34,7 @@ let imageCounter = 0;
 function preload() {
 
   for (let i = 0; i <= 13; i++) {
-    ronnie[i] = loadImage(`assets/ronnie_${i}.jpg`)
+    ronnie[i] = loadImage(`MyPics/ronnie_${i}.jpg`)
   }
 }
 
