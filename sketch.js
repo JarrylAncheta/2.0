@@ -18,7 +18,7 @@ let bunnypic;
 function preload() {
 
   for (let i = 0; i <= 12; i++) {
-    taskName[i] = loadImage("Task" + i + ".jpg");
+    taskName[i] = loadImage("Task_" + i + ".jpg");
   }
 }
 
