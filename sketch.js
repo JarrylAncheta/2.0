@@ -16,7 +16,7 @@ let button;
 
 function preload() {
 
-  for (let i = 0; i <= 12; i++) {
+  for (let i = 0; i <= 14; i++) {
     taskName[i] = loadImage("MyPics/Task_" + i + ".jpg");
   }
 }
