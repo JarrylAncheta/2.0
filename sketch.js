@@ -1,19 +1,19 @@
-// food array
+// Task array
 let TaskName = [
-{name: "workout"}  ,
-{name:"green"}  ,
-{name:"podcast"}  ,
-{name:"compliment"}  ,
-{name:"walk"}  ,
-{name:"recipe"}  ,
-{name:"tour"}  ,
-{name:"rap"}  ,
-{name:"restaurant"}  ,
-{name:"water"}  ,
-{name:"stocks"}  ,
+{name: "compliment"}  ,
+{name:"conversation"}  ,
 {name:"explore"}  ,
 {name:"gas"}  ,
-{name:"conversation"}  ,
+{name:"green"}  ,
+{name:"podcast"}  ,
+{name:"rap"}  ,
+{name:"recipe"}  ,
+{name:"restaurant"}  ,
+{name:"stocks"}  ,
+{name:"tour"}  ,
+{name:"walk"}  ,
+{name:"water"}  ,
+{name:"workout"}  ,
 ];
 let randomIndex;
 let backgroundColor;
@@ -23,15 +23,18 @@ let imageCounter = 0;
 let button;
 
 function preload() {
-  for (let i = 0; i < TaskName.length; i++) {
+  // sound
+  soundFormats("mp3");
+  fx=loadSound("Drum-roll-snare-sound.mp3")
+  for (let i = 0; i < foodName.length; i++) {
     img = loadImage("MyPics/Task_" + TaskName[i].name + ".jpg")
     tasks[i] = {
       image: img,
       name: TaskName[i].name
     }
   }
-
-  }
+myFont = loadFont('MyPics/BankGothicRegular.ttf');
+}
 
 function setup() {
 
@@ -53,6 +56,7 @@ function setup() {
   button = createButton("Explore!");
   button.position(width/2 -100, height/2+400);
   button.size(200, 50);
+  button.style("font-family", "BankGothicRegular");
   button.style("font-size", "30px");
   button.style('background-color', "#bfc8db");
 
@@ -63,7 +67,7 @@ function draw() {
   if (animate == true) {
     clear();
     fill(random(255, 205), random(205, 255), random(205, 205))
-    if (imageCounter < tasks.length - 1) {
+    if (imageCounter < foods.length - 1) {
       imageCounter++;
     } else {
       imageCounter = 0;
@@ -82,9 +86,9 @@ function randomizer() {
     fill(0);
     Task = tasks[randomIndex]
     image(Task.image, width / 2, height /2);
-    TaskName = task.name.replaceAll("_", " ");
+    TaskName = Task.name.replaceAll("_", " ");
     text(
-      `How about some ${taskName} ?`,
+      `How about some ${TaskName} ?`,
       width / 2,
       height /1.2
     );
@@ -100,7 +104,7 @@ function randomizer() {
 
 function buttonPressed() {
   // if there's more than 1 food in the array, run the timeout
-  animate = Task.length > 1;
+  animate = tasks.length > 1;
   if (animate) {
 
     setTimeout(randomizer, 1500);
