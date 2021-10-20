@@ -1,19 +1,19 @@
 // food array
 let taskName = [
-{name: "Task_workout"}  ,
-{name:"Task_green"}  ,
-{name:"Task_podcast"}  ,
-{name:"Task_compliment"}  ,
-{name:"Task_walk"}  ,
-{name:"Task_recipe"}  ,
-{name:"Task_tour"}  ,
-{name:"Task_rap"}  ,
-{name:"Task_restaurant"}  ,
-{name:"Task_water"}  ,
-{name:"Task_stocks"}  ,
-{name:"Task_explore"}  ,
-{name:"Task_gas"}  ,
-{name:"Task_conversation"}  ,
+{name: "workout"}  ,
+{name:"green"}  ,
+{name:"podcast"}  ,
+{name:"compliment"}  ,
+{name:"walk"}  ,
+{name:"recipe"}  ,
+{name:"tour"}  ,
+{name:"rap"}  ,
+{name:"restaurant"}  ,
+{name:"water"}  ,
+{name:"stocks"}  ,
+{name:"explore"}  ,
+{name:"gas"}  ,
+{name:"conversation"}  ,
 ];
 let randomIndex;
 let backgroundColor;
