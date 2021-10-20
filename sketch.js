@@ -3,7 +3,6 @@ let objective = [
   { title: "Lucky Star", genre: "Shoujo" },
   { title: "HunterxHunter", genre: "Shounen" },
 
-let counter = 0;
 let animating = false;
 let fx;
 let taskName = [];
