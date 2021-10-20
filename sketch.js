@@ -1,6 +1,6 @@
 // Task array
 let TaskName = [
-{name: "compliment"}  ,
+{name:"compliment"}  ,
 {name:"conversation"}  ,
 {name:"explore"}  ,
 {name:"gas"}  ,
