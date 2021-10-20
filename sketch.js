@@ -1,4 +1,4 @@
-let quotes = [{name: "pic1"}, {name: "pic2"},{name:"pic3"}, {name: "pic4"},{name: "pic5"},{name: "pic6"},{name: "pic7"},{name: "pic8"}]
+let quotes = [{name: "compliment"}, {name: "conversation"},{name:"explore"}, {name: "gas"},{name: "green"},{name: "podcast"},{name: "rap"},{name: "recipe"},{name: "rap"},{name: "recipe"},{name: "restaurant"},{name: "stocks"},{name: "tour"},{name: "walk"},{name: "water"},{name: "workout"},]
 
 let randomIndex;
 let randompics = [];
