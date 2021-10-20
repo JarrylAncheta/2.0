@@ -29,7 +29,7 @@ function setup() {
   background (200)
   textSelection = ""
   imageSelection = 0
-  console.log (tvshow);
+  console.log (task);
   imageMode (CENTER)
 button = createButton ('gimme a random flick');
    button.position(0, 0);
@@ -41,7 +41,7 @@ button = createButton ('gimme a random flick');
 
 function draw() {  
   background(200,0,0);
-  image(tvshow[imageSelection], width/2, height/2, 200, 250);
+  image(task[imageSelection], width/2, height/2, 200, 250);
   text(textSelection, 200, 350)
   fill (255)
   textFont ('Avenir')
