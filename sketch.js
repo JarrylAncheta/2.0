@@ -22,6 +22,15 @@ let foods = [];
 let imageCounter = 0;
 let button;
 
+function preload() {
+  for (let i = 0; i < foodName.length; i++) {
+    img = loadImage("MyPics" + foodName[i].name + ".jpg")
+    foods[i] = {
+      image: img,
+      name: foodName[i].name
+    }
+  }
+
   }
 
 function setup() {
