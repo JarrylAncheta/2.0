@@ -1,17 +1,18 @@
 let titles = [
-"Dysfunctional Family.",
-"My mom's show",
-"Dad's show",
-"The Gen X parents' show.",
-"Out of british royalty drama",
-"80s nostalgia.", 
-" Drugs", 
-"For Tweenagers",
-"Depressed Actors",
-"Must watch.", 
-"Get your life together",
-"2000s theater geek",
-"Ran out of anime"]
+"compliment",
+"conversation",
+"explore",
+"gas",
+"green",
+"podcast", 
+"rap", 
+"recipe",
+"restaurant",
+"stocks", 
+"tour",
+"walk",
+"water",
+"workout"]
 
 let task = [];
 let animating = false;
