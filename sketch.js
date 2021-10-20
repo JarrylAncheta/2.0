@@ -1,111 +1,85 @@
-// task array
-let TaskName = [
-{name: "compliment"}  ,
-{name:"conversation"}  ,
-{name:"explore"}  ,
-{name:"gas"}  ,
-{name:"green"}  ,
-{name:"podcast"}  ,
-{name:"rap"}  ,
-{name:"recipe"}  ,
-{name:"restaurant"}  ,
-{name:"stocks"}  ,
-{name:"tour"}  ,
-{name:"walk"}  ,
-{name:"water"}  ,
-{name:"workout"}  ,
-];
 let randomIndex;
-let backgroundColor;
-let animate = false;
-let tasks = [];
+let counter = 0;
+let animating = false;
+let fx;
+let animePics = [];
 let imageCounter = 0;
+let isLast = false;
 let button;
+let bunnypic;
+
+
 
 function preload() {
-  for (let i = 0; i < TaskName.length; i++) {
-    img = loadImage("MyPics/Task_" + TaskName[i].name + ".jpg")
-    tasks[i] = {
-      image: img,
-      name: TaskName[i].name
-    }
+  //song
+  soundFormats("mp3");
+  fx = loadSound("Drum Roll - Gaming Sound Effect (HD).mp3");
+bunnypic = loadImage("bunny.gif");
+
+  for (let i = 0; i <= 12; i++) {
+    animePics[i] = loadImage("anime" + i + ".png");
   }
+}
 
 function setup() {
-
-  createCanvas(1000, 1000);
-
-  background(color(random(255, 205), random(205, 255), random(205, 205)));
-  backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
-  textSize(30);
-  textFont(myFont);
-  fill(0);
-  frameRate(20);
-  imageMode(CENTER);
+  createCanvas(500, 500);
+  textSize(18);
+  textFont("consolas");
   textAlign(CENTER);
-  text("Are you hungry,",width/2, height/2 -50);
-  text("and can't decide what to eat?",width/2, height/2);
-  text("click on the button below to explore",width/2, height/2 + 50);
-
-// create a button
-  button = createButton("Explore!");
-  button.position(width/2 -100, height/2+400);
-  button.size(200, 50);
-  button.style("font-size", "30px");
-  button.style('background-color', "#bfc8db");
-
-// if button is pressed
+  imageMode(CENTER);
+  background(random(255), random(255), random(255));
+  fill(random(255), random(255), random(255));
+  text("Anime Reccomendation Generator (Express Ver.)", 250, 230);
+  text("Click button below to begin.", 250, 280);
+  image(bunnypic, 230, 400);
+  console.log(animePics);
+  frameRate(15);
+  button = createButton("CLICK ME!! OVER HERE!");
   button.mousePressed(buttonPressed);
 }
+
 function draw() {
-  if (animate == true) {
+  if (animating == true) {
     clear();
-    fill(random(255, 205), random(205, 255), random(205, 205))
-    if (imageCounter < tasks.length - 1) {
+
+    if (imageCounter < animePics.length - 1) {
+      background(random(255), random(255), random(255));
       imageCounter++;
-    } else {
+      //console.log(animePics[imageCounter]);
+      console.log(imageCounter);
+      //console.log("anime pics " + animePics.length);
+    }
+    else {
       imageCounter = 0;
     }
-    Task = tasks[imageCounter]
-    image(task.image, width / 2, height / 2);
+    image(animePics[imageCounter], width / 2, height / 2);
   }
+
+
 }
 
+
 function randomizer() {
-  animate = false;
-  if (tasks.length > 0) {
-    // get random object from stuffs
-    background(random(255, 205), random(205, 255), random(205, 205));
-    randomIndex = int(random(tasks.length));
-    fill(0);
-    task = tasks[randomIndex]
-    image(tasks.image, width / 2, height /2);
-    TaskName = task.name.replaceAll("_", " ");
-    text(
-      `How about some ${TaskName} ?`,
-      width / 2,
-      height /1.2
-    );
-    // and then take that object out of the array
-    tasks.splice(randomIndex, 1);
+  animating = false;
+
+  if (animeShows[0]) {
+    background(random(255), random(255), random(255));
+    randomIndex = int(random(animeShows.length));
+    image(animePics[randomIndex], width/2, height/2.3);
+    fill(random(255), random(255), random(255));
+    text("TITLE: " + animeShows[randomIndex].title, 250, 450);
+    text("GENRE: " + animeShows[randomIndex].genre, 250, 470);
+    animeShows.splice(randomIndex, 1);
+    animePics.splice(randomIndex, 1);
   } else {
-    //   draw the background again so it does not overlay the previous object
-    background(backgroundColor);    // when we show all food, nothing else to show
-    text("Seriously, you go all the way here?", width / 2, height / 2);
-    text("Make up your mind. Eat anything!",width/2, height/2 +50)
+    background(random(255), random(255), random(255));
+    text("that's all for now!", 250, 250);
   }
 }
 
 function buttonPressed() {
-  // if there's more than 1 food in the array, run the timeout
-  animate = tasks.length > 1;
-  if (animate) {
-
-    setTimeout(randomizer, 1500);
-
-    fx.play();
-    // don't run the timeout + display the last food
-  } else {
-    randomizer()
-  }
+  animating = true;
+  setTimeout(randomizer, 4000);
+  fx.play();
 }
+
