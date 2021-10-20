@@ -26,7 +26,7 @@ function preload() {
   // sound
   soundFormats("mp3");
   fx=loadSound("Drum-roll-snare-sound.mp3")
-  for (let i = 0; i < foodName.length; i++) {
+  for (let i = 0; i < TaskName.length; i++) {
     img = loadImage("MyPics/Task_" + TaskName[i].name + ".jpg")
     tasks[i] = {
       image: img,
@@ -67,7 +67,7 @@ function draw() {
   if (animate == true) {
     clear();
     fill(random(255, 205), random(205, 255), random(205, 205))
-    if (imageCounter < foods.length - 1) {
+    if (imageCounter < tasks.length - 1) {
       imageCounter++;
     } else {
       imageCounter = 0;
