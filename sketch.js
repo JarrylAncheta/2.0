@@ -24,7 +24,7 @@ let button;
 
 function preload() {
   for (let i = 0; i < TaskName.length; i++) {
-    img = loadImage("assets/food_" + TaskName[i].name + ".jpg")
+    img = loadImage("MyPics/Task_" + TaskName[i].name + ".jpg")
     tasks[i] = {
       image: img,
       name: TaskName[i].name
@@ -76,9 +76,9 @@ function randomizer() {
   if (tasks.length > 0) {
     // get random object from stuffs
     background(random(255, 205), random(205, 255), random(205, 205));
-    randomIndex = int(random(foods.length));
+    randomIndex = int(random(tasks.length));
     fill(0);
-    food = foods[randomIndex]
+    task = tasks[randomIndex]
     image(tasks.image, width / 2, height /2);
     TaskName = task.name.replaceAll("_", " ");
     text(
@@ -87,7 +87,7 @@ function randomizer() {
       height /1.2
     );
     // and then take that object out of the array
-    foods.splice(randomIndex, 1);
+    tasks.splice(randomIndex, 1);
   } else {
     //   draw the background again so it does not overlay the previous object
     background(backgroundColor);    // when we show all food, nothing else to show
