@@ -5,7 +5,6 @@ function setup() {
   background(color(random(255, 205), random(205, 255), random(205, 205)));
   backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
   textSize(30);
-  textFont(myFont);
   fill(0);
   frameRate(20);
   imageMode(CENTER);
