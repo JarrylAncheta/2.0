@@ -79,10 +79,10 @@ function randomizer() {
     randomIndex = int(random(foods.length));
     fill(0);
     food = foods[randomIndex]
-    image(food.image, width / 2, height /2);
-    foodName = food.name.replaceAll("_", " ");
+    image(tasks.image, width / 2, height /2);
+    TaskName = task.name.replaceAll("_", " ");
     text(
-      `How about some ${foodName} ?`,
+      `How about some ${TaskName} ?`,
       width / 2,
       height /1.2
     );
@@ -98,7 +98,7 @@ function randomizer() {
 
 function buttonPressed() {
   // if there's more than 1 food in the array, run the timeout
-  animate = foods.length > 1;
+  animate = tasks.length > 1;
   if (animate) {
 
     setTimeout(randomizer, 1500);
