@@ -18,14 +18,14 @@ let taskName = [
 let randomIndex;
 let backgroundColor;
 let animate = false;
-let task = [];
+let tasks = [];
 let imageCounter = 0;
 let button;
 
 function preload() {
   for (let i = 0; i < taskName.length; i++) {
     img = loadImage("MyPics/Task_" + taskName[i].name + ".jpg")
-    task[i] = {
+    tasks[i] = {
       image: img,
       name: foodName[i].name
     }
@@ -63,24 +63,24 @@ function draw() {
   if (animate == true) {
     clear();
     fill(random(255, 205), random(205, 255), random(205, 205))
-    if (imageCounter < task.length - 1) {
+    if (imageCounter < tasks.length - 1) {
       imageCounter++;
     } else {
       imageCounter = 0;
     }
-    food = foods[imageCounter]
+    task = tasks[imageCounter]
     image(task.image, width / 2, height / 2);
   }
 }
 
 function randomizer() {
   animate = false;
-  if (task.length > 0) {
+  if (tasks.length > 0) {
     // get random object from stuffs
     background(random(255, 205), random(205, 255), random(205, 205));
-    randomIndex = int(random(task.length));
+    randomIndex = int(random(tasks.length));
     fill(0);
-    food = foods[randomIndex]
+    task = tasks[randomIndex]
     image(task.image, width / 2, height /2);
     taskName = task.name.replaceAll("_", " ");
     text(
@@ -89,7 +89,7 @@ function randomizer() {
       height /1.2
     );
     // and then take that object out of the array
-    task.splice(randomIndex, 1);
+    tasks.splice(randomIndex, 1);
   } else {
     //   draw the background again so it does not overlay the previous object
     background(backgroundColor);    // when we show all food, nothing else to show
