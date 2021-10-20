@@ -53,7 +53,6 @@ function setup() {
   button = createButton("Explore!");
   button.position(width/2 -100, height/2+400);
   button.size(200, 50);
-  button.style("font-family", "IndieFlower-Regular");
   button.style("font-size", "30px");
   button.style('background-color', "#bfc8db");
 
