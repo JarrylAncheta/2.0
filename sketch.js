@@ -2,7 +2,10 @@ let objective = [
   { title: "Jojo's Bizarre Adventure", genre: "Shounen" },
   { title: "Lucky Star", genre: "Shoujo" },
   { title: "HunterxHunter", genre: "Shounen" },
+]
 
+let randomIndex;
+let counter = 0;
 let animating = false;
 let fx;
 let taskName = [];
