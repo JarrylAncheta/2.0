@@ -15,7 +15,10 @@ let button;
 
 
 function preload() {
-
+   
+  soundFormats("mp3");
+  fx = loadSound("Drum-roll-snare-sound.mp3");
+ 
   for (let i = 0; i <= 14; i++) {
     taskName[i] = loadImage("MyPics/Task_" + i + ".jpg");
   }
