@@ -27,7 +27,7 @@ function preload() {
     img = loadImage("MyPics/Task_" + taskName[i].name + ".jpg")
     tasks[i] = {
       image: img,
-      name: foodName[i].name
+      name: taskName[i].name
     }
   }
 
