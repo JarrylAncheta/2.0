@@ -1,3 +1,41 @@
+// task array
+let TaskName = [
+{name: "almond_pepper_chicken_tenders"}  ,
+{name:"savory_steamed_rice_cakes_with_prawn"}  ,
+{name:"sizzling_pancake"}  ,
+{name:"beef_filet_mignon"}  ,
+{name:"bibimbap"}  ,
+{name:"broken_rice"}  ,
+{name:"Noodle_and_Tofu_with_Shrimp_Sauce"}  ,
+{name:"snail_vermicelli_soup"}  ,
+{name:"chicken_rice"}  ,
+{name:"curry"}  ,
+{name:"duck_noodle"}  ,
+{name:"hamburger"}  ,
+{name:"omelette_bento"}  ,
+{name:"pho"}  ,
+{name:"pizza"}  ,
+{name:"ramen"}  ,
+{name:"spaghetti"},
+{name:"steak"},
+{name:"tom_yum"},
+];
+let randomIndex;
+let backgroundColor;
+let animate = false;
+let tasks = [];
+let imageCounter = 0;
+let button;
+
+function preload() {
+  for (let i = 0; i < TaskName.length; i++) {
+    img = loadImage("assets/food_" + TaskName[i].name + ".jpg")
+    tasks[i] = {
+      image: img,
+      name: TaskName[i].name
+    }
+  }
+
 function setup() {
 
   createCanvas(1000, 1000);
@@ -5,6 +43,7 @@ function setup() {
   background(color(random(255, 205), random(205, 255), random(205, 205)));
   backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
   textSize(30);
+  textFont(myFont);
   fill(0);
   frameRate(20);
   imageMode(CENTER);
@@ -33,7 +72,7 @@ function draw() {
       imageCounter = 0;
     }
     Task = tasks[imageCounter]
-    image(Task.image, width / 2, height / 2);
+    image(task.image, width / 2, height / 2);
   }
 }
 
@@ -42,18 +81,18 @@ function randomizer() {
   if (tasks.length > 0) {
     // get random object from stuffs
     background(random(255, 205), random(205, 255), random(205, 205));
-    randomIndex = int(random(tasks.length));
+    randomIndex = int(random(foods.length));
     fill(0);
-    Task = tasks[randomIndex]
-    image(Task.image, width / 2, height /2);
-    TaskName = task.name.replaceAll("_", " ");
+    food = foods[randomIndex]
+    image(food.image, width / 2, height /2);
+    foodName = food.name.replaceAll("_", " ");
     text(
-      `How about some ${taskName} ?`,
+      `How about some ${foodName} ?`,
       width / 2,
       height /1.2
     );
     // and then take that object out of the array
-    tasks.splice(randomIndex, 1);
+    foods.splice(randomIndex, 1);
   } else {
     //   draw the background again so it does not overlay the previous object
     background(backgroundColor);    // when we show all food, nothing else to show
@@ -64,7 +103,7 @@ function randomizer() {
 
 function buttonPressed() {
   // if there's more than 1 food in the array, run the timeout
-  animate = Task.length > 1;
+  animate = foods.length > 1;
   if (animate) {
 
     setTimeout(randomizer, 1500);
@@ -75,5 +114,3 @@ function buttonPressed() {
     randomizer()
   }
 }
-
-
