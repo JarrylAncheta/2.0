@@ -1,5 +1,5 @@
 // food array
-let taskName = [
+let TaskName = [
 {name: "workout"}  ,
 {name:"green"}  ,
 {name:"podcast"}  ,
@@ -23,11 +23,11 @@ let imageCounter = 0;
 let button;
 
 function preload() {
-  for (let i = 0; i < taskName.length; i++) {
-    img = loadImage("MyPics/Task_" + taskName[i].name + ".jpg")
+  for (let i = 0; i < TaskName.length; i++) {
+    img = loadImage("MyPics/Task_" + TaskName[i].name + ".jpg")
     tasks[i] = {
       image: img,
-      name: taskName[i].name
+      name: TaskName[i].name
     }
   }
 
@@ -68,8 +68,8 @@ function draw() {
     } else {
       imageCounter = 0;
     }
-    task = tasks[imageCounter]
-    image(task.image, width / 2, height / 2);
+    Task = tasks[imageCounter]
+    image(Task.image, width / 2, height / 2);
   }
 }
 
@@ -80,9 +80,9 @@ function randomizer() {
     background(random(255, 205), random(205, 255), random(205, 205));
     randomIndex = int(random(tasks.length));
     fill(0);
-    task = tasks[randomIndex]
-    image(task.image, width / 2, height /2);
-    taskName = task.name.replaceAll("_", " ");
+    Task = tasks[randomIndex]
+    image(Task.image, width / 2, height /2);
+    TaskName = task.name.replaceAll("_", " ");
     text(
       `How about some ${taskName} ?`,
       width / 2,
@@ -100,7 +100,7 @@ function randomizer() {
 
 function buttonPressed() {
   // if there's more than 1 food in the array, run the timeout
-  animate = task.length > 1;
+  animate = Task.length > 1;
   if (animate) {
 
     setTimeout(randomizer, 1500);
