@@ -84,7 +84,7 @@ function randomizer() {
     image(task.image, width / 2, height /2);
     taskName = task.name.replaceAll("_", " ");
     text(
-      `How about some ${foodName} ?`,
+      `How about some ${taskName} ?`,
       width / 2,
       height /1.2
     );
