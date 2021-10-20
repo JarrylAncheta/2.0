@@ -3,7 +3,6 @@ let objective = [
   { title: "Lucky Star", genre: "Shoujo" },
   { title: "HunterxHunter", genre: "Shounen" },
 
-let randomIndex;
 let counter = 0;
 let animating = false;
 let fx;
@@ -11,8 +10,6 @@ let taskName = [];
 let imageCounter = 0;
 let isLast = false;
 let button;
-let bunnypic;
-
 
 
 function preload() {
