@@ -66,7 +66,6 @@ function randomizer() {
     taskName.splice(randomIndex, 1);
   } else {
     background(random(255), random(255), random(255));
-    text("that's all for now!", 250, 250);
   }
 }
 
