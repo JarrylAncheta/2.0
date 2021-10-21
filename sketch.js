@@ -1,18 +1,11 @@
-let objective = [
-  { title: "Jojo's Bizarre Adventure", genre: "Shounen" },
-  { title: "Lucky Star", genre: "Shoujo" },
-  { title: "HunterxHunter", genre: "Shounen" },
-]
-
 let randomIndex;
-let counter = 0;
+let imageCounter = 0;
 let animating = false;
+let button;
 let fx;
 let taskName = [];
-let imageCounter = 0;
 let isLast = false;
-let button;
-
+let counter = 0;
 
 function preload() {
    
@@ -32,11 +25,11 @@ function setup() {
   imageMode(CENTER);
   background(random(255), random(255), random(255));
   fill(random(255), random(255), random(255));
-  text("Anime Reccomendation Generator (Express Ver.)", 250, 230);
+  text("Task Generator (Express Ver.)", 250, 230);
   text("Click button below to begin.", 250, 280);
   console.log(taskName);
   frameRate(15);
-  button = createButton("CLICK ME!! OVER HERE!");
+  button = createButton("CLICK ME");
   button.mousePressed(buttonPressed);
 }
 
@@ -47,9 +40,9 @@ function draw() {
     if (imageCounter < taskName.length - 1) {
       background(random(255), random(255), random(255));
       imageCounter++;
-      //console.log(animePics[imageCounter]);
+      //console.log(taskPics[imageCounter]);
       console.log(imageCounter);
-      //console.log("anime pics " + animePics.length);
+      //console.log("task pics " + taskPics.length);
     }
     else {
       imageCounter = 0;
@@ -57,9 +50,7 @@ function draw() {
     image(taskName[imageCounter], width / 2, height / 2);
   }
 
-
 }
-
 
 function randomizer() {
   animating = false;
