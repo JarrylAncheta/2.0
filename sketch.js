@@ -60,8 +60,6 @@ function randomizer() {
     randomIndex = int(random(objective.length));
     image(taskName[randomIndex], width/2, height/2.3);
     fill(random(255), random(255), random(255));
-    text("TITLE: " + objective[randomIndex].title, 250, 450);
-    text("GENRE: " + objective[randomIndex].genre, 250, 470);
     objective.splice(randomIndex, 1);
     taskName.splice(randomIndex, 1);
   } else {
