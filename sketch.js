@@ -1,57 +1,75 @@
-// my stuffs
-let restaurant = [
-  { name: "McDonald's", food: "10 piece nuggets" },
-  { name: "In&Out", food: "double double" },
-  { name: "Wendy's", food: "a large sprite" },
-  { name: "Chic-fil-A", food: "vanilla ice cream" },
-  { name: "Burger King", food: "a milkshake" },
-];
 let randomIndex;
-let backgroundColor;
-let animate = false;
-function setup() {
-  createCanvas(1000, 1000);
-  background(color(random(255, 205), random(205, 255), random(205, 205)));
-  backgroundColor = color(random(255, 205), random(205, 255), random(205, 205));
-  textSize(30);
-  fill(0);
-  text("click to begin", 100, 100);
-}
-// animate the ellipses
-function draw() {
-  if (animate == true) {
-    noStroke();
-    fill(random(255, 205), random(205, 255), random(205, 205))
-    ellipse(random(width), random(height), random(10, 200));
+let imageCounter = 0;
+let animating = false;
+let button;
+let fx;
+let taskName = [];
+let isLast = false;
+let counter = 0;
+
+function preload() {
+   
+  soundFormats("mp3");
+  fx = loadSound("Drum-roll-snare-sound.mp3");
+ 
+  for (let i = 1; i <= 14; i++) {
+    taskName[i] = loadImage("MyPics/Task_" + i + ".jpg");
   }
+}
+
+function setup() {
+  createCanvas(500, 500);
+  textSize(18);
+  textFont("consolas");
+  textAlign(CENTER);
+  imageMode(CENTER);
+  background(random(255), random(255), random(255));
+  fill(random(255), random(255), random(255));
+  text("Task Generator (Express Ver.)", 250, 230);
+  text("Click button below to begin.", 250, 280);
+  console.log(taskName);
+  frameRate(15);
+  button = createButton("CLICK ME");
+  button.mousePressed(buttonPressed);
+}
+
+function draw() {
+  if (animating == true) {
+    clear();
+
+    if (imageCounter < taskName.length - 1) {
+      background(random(255), random(255), random(255));
+      imageCounter++;
+      //console.log(taskPics[imageCounter]);
+      console.log(imageCounter);
+      //console.log("task pics " + taskPics.length);
+    }
+    else {
+      imageCounter = 0;
+    }
+    image(taskName[imageCounter], width / 2, height / 2);
+  }
+
 }
 
 function randomizer() {
-  animate = false;
-  if (restaurant[0]) {
-    //   get random object from stuffs
-    background(backgroundColor);
-    randomIndex = int(random(restaurant.length));
-      fill(0);
+  animating = false;
 
-    text(
-      ` ${restaurant[randomIndex].food} at
-      ${restaurant[randomIndex].name}`,
-      width / 2,
-      height / 2
-    );
-    //   and then take that object out of the array
-    restaurant.splice(randomIndex, 1);
+  if (objective[0]) {
+    background(random(255), random(255), random(255));
+    randomIndex = int(random(objective.length));
+    image(taskName[randomIndex], width/2, height/2.3);
+    fill(random(255), random(255), random(255));
+    objective.splice(randomIndex, 1);
+    taskName.splice(randomIndex, 1);
   } else {
-    //   draw the background again so it does not overlay the previous object
-    background(backgroundColor);
-    // when we show all obejcts, nothing else to show
-      fill(0);
-
-    text("Sorry, I don't have anything left :(", width / 4, height / 2);
+    background(random(255), random(255), random(255));
   }
 }
-function mousePressed() {
-  animate = true;
-  setTimeout(randomizer, 1500);
+
+function buttonPressed() {
+  animating = true;
+  setTimeout(randomizer, 4000);
+  fx.play();
 }
+
