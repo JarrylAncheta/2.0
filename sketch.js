@@ -20,8 +20,8 @@ function setup() {
   imageMode(CENTER);
   background(random(255), random(255), random(255));
   fill(random(255), random(255), random(255));
-  text("Task Generator (Express Ver.)", 250, 230);
-  text("Click button below to begin.", 250, 280);
+  text("Task Generator (Express Ver.)", 290, 220);
+  text("Click button below to begin.", 250, 180);
   console.log(taskName);
   frameRate(24);
   button = createButton("Randomize");
@@ -45,21 +45,6 @@ function draw() {
     image(taskName[imageCounter], width / 2, height / 2);
   }
 
-}
-
-function randomizer() {
-  animating = false;
-
-  if (objective[0]) {
-    background(random(255), random(255), random(255));
-    randomIndex = int(random(objective.length));
-    image(taskName[randomIndex], width/2, height/2.3);
-    fill(random(255), random(255), random(255));
-    objective.splice(randomIndex, 1);
-    taskName.splice(randomIndex, 1);
-  } else {
-    background(random(255), random(255), random(255));
-  }
 }
 
 function buttonPressed() {
