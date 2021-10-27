@@ -17,16 +17,14 @@ function preload() {
 function setup() {
   createCanvas(500, 500);
   textSize(18);
-  textFont("consolas");
-  textAlign(CENTER);
   imageMode(CENTER);
   background(random(255), random(255), random(255));
   fill(random(255), random(255), random(255));
   text("Task Generator (Express Ver.)", 250, 230);
   text("Click button below to begin.", 250, 280);
   console.log(taskName);
-  frameRate(15);
-  button = createButton("CLICK ME");
+  frameRate(24);
+  button = createButton("Randomize");
   button.mousePressed(buttonPressed);
 }
 
